@@ -1,0 +1,177 @@
+//============================================================================
+// Karplus-Strong-like string sound synthesis using short white noise sample
+// Copyright 2020 Jani Frilander
+// Licensed under terms of Creative Commons Attribution 4.0
+// 
+// Loop size = sample rate / note frequency
+// Precalculated loop lengths are for 44100 sample rate. If your sample has
+// other rate either resample or recalculate loop lengths.
+//
+// This is the C code I wrote for the job.
+//
+//#include <stdio.h>
+//#include <math.h>
+//
+//void main (){
+//	double rate=44100.0;
+//	for (int d=0;d<128;d++){
+//		double f=440.0*pow(2.0,(((double)d-69.0)/12.0));
+//		double loop_length=rate/f;
+//		double rounded=floor(loop_length);
+//		double rounded_f=rate/rounded;
+//		double error=1200.0*log2(rounded_f/f);
+//		int tune=(int)round(0-error);
+//		//printf("NOTE:%d f:%f loop:%f rounded:%f rounded_f:%f error cents:%f\n",d,f,loop_length,rounded,rounded_f,error);
+//		printf("<region>key=%d loop_start=1 loop_end=%d",d,(int)rounded);
+//		if(tune)
+//			printf(" tune=%d",tune);
+//		printf("\n");
+//	}
+//}
+// Version 0.1
+<control>
+default_path=synthharpsi_samples\
+
+<group>
+loop_mode=loop_continuous 
+sample=noise_brown.wav
+ampeg_attack=0.001 ampeg_decay=12.0 ampeg_sustain=0 ampeg_release=0.2
+fil_type=lpf_2p
+cutoff=2400
+//resonance=0.1
+fil_keycenter=60
+fil_keytrack=50
+fileg_attack=.1
+//fileg_decay=0.5
+fileg_depth=-200
+//fileg_release=0.5
+//fileg_sustain=100
+
+<region>key=0 loop_start=1 loop_end=5393
+<region>key=1 loop_start=1 loop_end=5091
+<region>key=2 loop_start=1 loop_end=4805
+<region>key=3 loop_start=1 loop_end=4535
+<region>key=4 loop_start=1 loop_end=4281
+<region>key=5 loop_start=1 loop_end=4040
+<region>key=6 loop_start=1 loop_end=3814
+<region>key=7 loop_start=1 loop_end=3600
+<region>key=8 loop_start=1 loop_end=3397 tune=-1
+<region>key=9 loop_start=1 loop_end=3207
+<region>key=10 loop_start=1 loop_end=3027
+<region>key=11 loop_start=1 loop_end=2857
+<region>key=12 loop_start=1 loop_end=2696 tune=-1
+<region>key=13 loop_start=1 loop_end=2545
+<region>key=14 loop_start=1 loop_end=2402 tune=-1
+<region>key=15 loop_start=1 loop_end=2267 tune=-1
+<region>key=16 loop_start=1 loop_end=2140
+<region>key=17 loop_start=1 loop_end=2020
+<region>key=18 loop_start=1 loop_end=1907
+<region>key=19 loop_start=1 loop_end=1800
+<region>key=20 loop_start=1 loop_end=1698 tune=-1
+<region>key=21 loop_start=1 loop_end=1603 tune=-1
+<region>key=22 loop_start=1 loop_end=1513 tune=-1
+<region>key=23 loop_start=1 loop_end=1428 tune=-1
+<region>key=24 loop_start=1 loop_end=1348 tune=-1
+<region>key=25 loop_start=1 loop_end=1272 tune=-1
+<region>key=26 loop_start=1 loop_end=1201 tune=-1
+<region>key=27 loop_start=1 loop_end=1133 tune=-1
+<region>key=28 loop_start=1 loop_end=1070
+<region>key=29 loop_start=1 loop_end=1010
+<region>key=30 loop_start=1 loop_end=953 tune=-1
+<region>key=31 loop_start=1 loop_end=900
+<region>key=32 loop_start=1 loop_end=849 tune=-1
+<region>key=33 loop_start=1 loop_end=801 tune=-2
+<region>key=34 loop_start=1 loop_end=756 tune=-2
+<region>key=35 loop_start=1 loop_end=714 tune=-1
+<region>key=36 loop_start=1 loop_end=674 tune=-1
+<region>key=37 loop_start=1 loop_end=636 tune=-1
+<region>key=38 loop_start=1 loop_end=600 tune=-2
+<region>key=39 loop_start=1 loop_end=566 tune=-3
+<region>key=40 loop_start=1 loop_end=535
+<region>key=41 loop_start=1 loop_end=505
+<region>key=42 loop_start=1 loop_end=476 tune=-3
+<region>key=43 loop_start=1 loop_end=450
+<region>key=44 loop_start=1 loop_end=424 tune=-3
+<region>key=45 loop_start=1 loop_end=400 tune=-4
+<region>key=46 loop_start=1 loop_end=378 tune=-2
+<region>key=47 loop_start=1 loop_end=357 tune=-1
+<region>key=48 loop_start=1 loop_end=337 tune=-1
+<region>key=49 loop_start=1 loop_end=318 tune=-1
+<region>key=50 loop_start=1 loop_end=300 tune=-2
+<region>key=51 loop_start=1 loop_end=283 tune=-3
+<region>key=52 loop_start=1 loop_end=267 tune=-4
+<region>key=53 loop_start=1 loop_end=252 tune=-4
+<region>key=54 loop_start=1 loop_end=238 tune=-3
+<region>key=55 loop_start=1 loop_end=225
+<region>key=56 loop_start=1 loop_end=212 tune=-3
+<region>key=57 loop_start=1 loop_end=200 tune=-4
+<region>key=58 loop_start=1 loop_end=189 tune=-2
+<region>key=59 loop_start=1 loop_end=178 tune=-6
+<region>key=60 loop_start=1 loop_end=168 tune=-6
+<region>key=61 loop_start=1 loop_end=159 tune=-1
+<region>key=62 loop_start=1 loop_end=150 tune=-2
+<region>key=63 loop_start=1 loop_end=141 tune=-9
+<region>key=64 loop_start=1 loop_end=133 tune=-10
+<region>key=65 loop_start=1 loop_end=126 tune=-4
+<region>key=66 loop_start=1 loop_end=119 tune=-3
+<region>key=67 loop_start=1 loop_end=112 tune=-8
+<region>key=68 loop_start=1 loop_end=106 tune=-3
+<region>key=69 loop_start=1 loop_end=100 tune=-4
+<region>key=70 loop_start=1 loop_end=94 tune=-11
+<region>key=71 loop_start=1 loop_end=89 tune=-6
+<region>key=72 loop_start=1 loop_end=84 tune=-6
+<region>key=73 loop_start=1 loop_end=79 tune=-12
+<region>key=74 loop_start=1 loop_end=75 tune=-2
+<region>key=75 loop_start=1 loop_end=70 tune=-21
+<region>key=76 loop_start=1 loop_end=66 tune=-23
+<region>key=77 loop_start=1 loop_end=63 tune=-4
+<region>key=78 loop_start=1 loop_end=59 tune=-17
+<region>key=79 loop_start=1 loop_end=56 tune=-8
+<region>key=80 loop_start=1 loop_end=53 tune=-3
+<region>key=81 loop_start=1 loop_end=50 tune=-4
+<region>key=82 loop_start=1 loop_end=47 tune=-11
+<region>key=83 loop_start=1 loop_end=44 tune=-25
+<region>key=84 loop_start=1 loop_end=42 tune=-6
+<region>key=85 loop_start=1 loop_end=39 tune=-34
+<region>key=86 loop_start=1 loop_end=37 tune=-25
+<region>key=87 loop_start=1 loop_end=35 tune=-21
+<region>key=88 loop_start=1 loop_end=33 tune=-23
+<region>key=89 loop_start=1 loop_end=31 tune=-32
+<region>key=90 loop_start=1 loop_end=29 tune=-47
+<region>key=91 loop_start=1 loop_end=28 tune=-8
+<region>key=92 loop_start=1 loop_end=26 tune=-36
+<region>key=93 loop_start=1 loop_end=25 tune=-4
+<region>key=94 loop_start=1 loop_end=23 tune=-48
+<region>key=95 loop_start=1 loop_end=22 tune=-25
+<region>key=96 loop_start=1 loop_end=21 tune=-6
+<region>key=97 loop_start=1 loop_end=19 tune=-79
+<region>key=98 loop_start=1 loop_end=18 tune=-73
+<region>key=99 loop_start=1 loop_end=17 tune=-72
+<region>key=100 loop_start=1 loop_end=16 tune=-77
+<region>key=101 loop_start=1 loop_end=15 tune=-88
+<region>key=102 loop_start=1 loop_end=14 tune=-108
+<region>key=103 loop_start=1 loop_end=14 tune=-8
+<region>key=104 loop_start=1 loop_end=13 tune=-36
+<region>key=105 loop_start=1 loop_end=12 tune=-75
+<region>key=106 loop_start=1 loop_end=11 tune=-125
+<region>key=107 loop_start=1 loop_end=11 tune=-25
+<region>key=108 loop_start=1 loop_end=10 tune=-90
+<region>key=109 loop_start=1 loop_end=9 tune=-173
+<region>key=110 loop_start=1 loop_end=9 tune=-73
+<region>key=111 loop_start=1 loop_end=8 tune=-177
+<region>key=112 loop_start=1 loop_end=8 tune=-77
+<region>key=113 loop_start=1 loop_end=7 tune=-208
+<region>key=114 loop_start=1 loop_end=7 tune=-108
+<region>key=115 loop_start=1 loop_end=7 tune=-8
+<region>key=116 loop_start=1 loop_end=6 tune=-175
+<region>key=117 loop_start=1 loop_end=6 tune=-75
+<region>key=118 loop_start=1 loop_end=5 tune=-290
+<region>key=119 loop_start=1 loop_end=5 tune=-190
+<region>key=120 loop_start=1 loop_end=5 tune=-90
+<region>key=121 loop_start=1 loop_end=4 tune=-377
+<region>key=122 loop_start=1 loop_end=4 tune=-277
+<region>key=123 loop_start=1 loop_end=4 tune=-177
+<region>key=124 loop_start=1 loop_end=4 tune=-77
+<region>key=125 loop_start=1 loop_end=3 tune=-475
+<region>key=126 loop_start=1 loop_end=3 tune=-375
+<region>key=127 loop_start=1 loop_end=3 tune=-275
